@@ -14,7 +14,7 @@
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
-  mounts: [
-    "type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly"
-  ]
+//  mounts: [
+//    "type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly"
+//  ]
 }
