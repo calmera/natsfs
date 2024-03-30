@@ -47,6 +47,10 @@ func (r *Fs) Watch(ctx context.Context) error {
 		case <-ctx.Done():
 			return w.Stop()
 		case e := <-w.Updates():
+			if e == nil {
+				continue
+			}
+
 			if e.Deleted {
 				r.handleDelete(ctx, e)
 			} else {

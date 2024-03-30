@@ -12,7 +12,7 @@ type FsNode struct {
 	obs  jetstream.ObjectStore
 	meta *jetstream.ObjectInfo
 
-	*fs.Inode
+	fs.Inode
 }
 
 func (n *FsNode) Open(ctx context.Context, flags uint32) (fh fs.FileHandle, fuseFlags uint32, errno syscall.Errno) {

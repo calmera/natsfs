@@ -60,7 +60,7 @@ func (h *FileHandle) Read(ctx context.Context, dest []byte, off int64) (fuse.Rea
 		return nil, syscall.EINVAL
 	}
 
-	_ = copy(dest, h.b[off:len(dest)])
+	_ = copy(dest, h.b[off:])
 
 	return fuse.ReadResultData(dest), syscall.F_OK
 }

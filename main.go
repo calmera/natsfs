@@ -40,11 +40,11 @@ func main() {
 		nats.Name(fmt.Sprintf("NATSFS-%s", hn)),
 	}
 
-	if creds != nil {
+	if *creds != "" {
 		nopts = append(nopts, nats.UserCredentials(*creds))
 	}
 
-	if jwt != nil && seed != nil {
+	if *jwt != "" && *seed != "" {
 		nopts = append(nopts, nats.UserCredentials(*jwt, *seed))
 	}
 
@@ -74,6 +74,7 @@ func main() {
 	}
 	opts.Debug = *debug
 	server, err := fs.Mount(flag.Arg(0), root, &opts)
+	defer server.Unmount()
 	if err != nil {
 		fmt.Printf("Mount fail: %v\n", err)
 		os.Exit(1)
