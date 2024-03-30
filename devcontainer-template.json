@@ -1,0 +1,27 @@
+{
+  "id": "go",
+  "version": "4.0.0",
+  "name": "Go",
+  "description": "Develop Go based applications. Includes appropriate runtime args, Go, common tools, extensions, and dependencies.",
+  "documentationURL": "https://github.com/devcontainers/templates/tree/main/src/go",
+  "publisher": "Dev Container Spec Maintainers",
+  "licenseURL": "https://github.com/devcontainers/templates/blob/main/LICENSE",
+  "options": {
+    "imageVariant": {
+      "type": "string",
+      "description": "Go version:",
+      "proposals": [
+        "1-bookworm",
+        "1.22-bookworm",
+        "1.21-bookworm",
+        "1-bullseye",
+        "1.22-bullseye",
+        "1.21-bullseye"
+      ],
+      "default": "1.22-bookworm"
+    }
+  },
+  "platforms": [
+    "Go"
+  ]
+}
