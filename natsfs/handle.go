@@ -16,6 +16,12 @@ type FileHandle struct {
 	b  []byte
 }
 
+func (h *FileHandle) Setattr(ctx context.Context, in *fuse.SetAttrIn, out *fuse.AttrOut) syscall.Errno {
+	out.Mode = in.Mode
+	out.Size = uint64(len(h.b))
+	return syscall.F_OK
+}
+
 func (h *FileHandle) Flush(ctx context.Context) syscall.Errno {
 	_, err := h.obs.PutBytes(ctx, h.subject, h.b)
 	if err != nil {

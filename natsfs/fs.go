@@ -6,6 +6,7 @@ import (
 	"github.com/hanwen/go-fuse/v2/fuse"
 	"github.com/nats-io/nats.go/jetstream"
 	"github.com/rs/zerolog/log"
+	"strconv"
 	"syscall"
 )
 
@@ -79,6 +80,20 @@ func (r *Fs) handlePut(ctx context.Context, e *jetstream.ObjectInfo) {
 		}
 
 		p = ch
+	}
+
+	if e.Metadata != nil {
+		sin, fnd := e.Metadata["inode"]
+		if fnd {
+			_, err := strconv.Atoi(sin)
+			if err != nil {
+				log.Error().Err(err).Msg("unable to convert inode")
+				return
+			}
+
+			// -- if the inode has already been created, there is no need for us to create it again
+			return
+		}
 	}
 
 	ch := p.NewPersistentInode(ctx, &FsNode{obs: r.obs, meta: e}, fs.StableAttr{Mode: fuse.S_IFREG})
