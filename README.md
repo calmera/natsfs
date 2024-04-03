@@ -1,10 +1,11 @@
 # NATS Jetstream FUSE Driver
-How cool would it be to mount a NATS Jetstream stream as a filesystem? This project aims to do just that. It is a FUSE 
-driver that allows you to mount a NATS Jetstream ObjectStore as a filesystem.
+How cool would it be to mount a NATS JetStream object store as a filesystem? This project aims to do just that. It is a FUSE 
+driver that allows you to mount a NATS JetStream object store as a filesystem.
 
 ## About
-This project is more of a proof of concept than a production-ready tool. It is a FUSE driver that allows you to mount
-a NATS Jetstream object store as a filesystem. It is written in Go and uses the https://github.com/hanwen/go-fuse 
+This project is more of a proof of concept than a production-ready tool. The concept to prove being the ability to mount A JetStream
+Object Store directly into the linux filesystem using FUSE. I am happy to say that after an evening of bantering, swearing and
+ profanities, we are able to do just that. It is written in Go and uses the https://github.com/hanwen/go-fuse 
 library to make it easier to interact with the low-level stuff.  
 
 ## How to use
